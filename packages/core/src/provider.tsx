@@ -18,6 +18,8 @@ type Web3ContextType = {
   ENSName: ReturnType<Web3ReactPriorityHooks['usePriorityENSName']>
 }
 
+export type Connectors = [Connector, Web3ReactHooks][]
+
 const Web3Context = createContext<Web3ContextType | undefined>(undefined)
 
 export function Web3ReactProvider({
@@ -27,7 +29,7 @@ export function Web3ReactProvider({
   lookupENS = true,
 }: {
   children: ReactNode
-  connectors: [Connector, Web3ReactHooks][]
+  connectors: Connectors
   network?: Networkish
   lookupENS?: boolean
 }) {
